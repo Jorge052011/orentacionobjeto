@@ -70,3 +70,44 @@ class Telefono:
 s21 = Telefono("s21")
 print(s21)
 
+####interfase de una tienda
+from abc import ABC, abstractmethod
+class Tienda(ABC):
+
+    @abstractmethod
+    def vender():
+        pass
+    @abstractmethod
+    def comprar():
+        pass
+
+class Tienda_de_ropa(Tienda):
+    @abstractmethod
+    def vender():
+        pass
+    @abstractmethod
+    def comprar():
+        pass
+
+
+class Tienda_de_deportes(Tienda):
+    @abstractmethod
+    def vender():
+        pass
+    @abstractmethod
+    def comprar():
+        pass
+
+class Tienda_de_zapatos(Tienda):
+    @abstractmethod
+    def vender():
+        pass
+    @abstractmethod
+    def comprar():
+        pass
+
+
+
+
+
+
