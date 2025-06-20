@@ -1,4 +1,4 @@
-
+"""
 class Paciente:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -41,14 +41,14 @@ class Auto:
         self.marca =marca
         self.motorcito = Motor("4v")
 
-
+"""
 """
 Esto sería una herencia ereda la clase moto, hay que compararlo con el metodo anterior de composicion
 class Auto(Motor):
     def __init__(self, marca):
         self.marca =marca
        
-
+"""
 """
 class Bateria:
     def __init__(self, cap):
@@ -105,6 +105,88 @@ class Tienda_de_zapatos(Tienda):
     @abstractmethod
     def comprar():
         pass
+
+
+
+
+"""
+"""
+from abc import ABC, abstractmethod
+
+class SinGluten():
+    tipo_producto = "sin gluten"
+
+
+
+
+
+class Chocolate(ABC):
+
+    def __init__(self, porc_cacao):
+        self.porc_cacao = self.validar_porc_cacao(porc_cacao)
+
+    @abstractmethod
+    def validar_porc_cacao(self,porc):
+        pass
+
+class ChocolateAmargo(Chocolate):
+    def validar_porc_cacao(self, porc):
+        return min(max(0.75, porc),0,85)
+    
+class Chocman(ChocolateAmargo, SinGluten):
+    pass
+
+c= ChocolateAmargo(0.3)
+print(c.porc_cacao)
+
+print(Chocman.__mro__)
+    
+"""
+from abc import ABC, abstractmethod
+
+class Tienda(ABC):
+    def __init__(self, nombre, direccion):
+        self.nombre = nombre
+        self.direccion = direccion
+
+    def mostrar_info(self):
+        print(f"tienda : {self.nombre} - direccion : {self.direccion}")
+
+    @abstractmethod
+    def vender(self, producto):
+        pass
+
+    @abstractmethod
+    def facturar(self):
+        pass
+
+class Tienda_ropa(Tienda):
+    def vender(self, producto):
+        print(f"vendiendo un {producto}")
+
+    def facturar(self):
+        print("facturandooo")
+
+
+class Tienda_electronica(Tienda):
+    def vender(self, producto):
+        print(f"vendiendo un {producto}")
+
+t = Tienda_ropa("ABCDIN","caklle falsa 123")
+
+t.vender("pantalon")
+t.facturar()
+
+
+te = Tienda_electronica("ABCDIN","caklle falsa 123")
+
+te.vender("memoria ram")  ####revisar en video falto algo
+
+
+
+
+
+
 
 
 
